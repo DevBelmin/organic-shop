@@ -23,6 +23,7 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { environment } from '../environments/environment';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,9 @@ import { environment } from '../environments/environment';
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule // imports firebase/storage only needed for storage features
   ],
-  providers: [],
+  providers: [ 
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

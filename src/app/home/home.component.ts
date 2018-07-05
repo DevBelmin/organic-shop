@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  user$: Observable<firebase.User>;
+
+  constructor(private authService: AuthService) { 
+    this.user$ = authService.user$;
+
+    this.user$.subscribe((user) => {
+      if (!user) {
+        console.log(user);
+        this.authService.logout();
+      }
+    })
+   }
 
   ngOnInit() {
   }

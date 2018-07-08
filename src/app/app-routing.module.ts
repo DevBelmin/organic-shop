@@ -7,10 +7,12 @@ import { CheckOutComponent } from './check-out/check-out.component';
 import { ProductsComponent } from './products/products.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { LoginComponent } from './login/login.component';
-import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
-import { AdminProductsComponent } from './admin-products/admin-products.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { AdminGuardService } from './services/admin-guard.service';
+import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
+import { AdminNewProductComponent } from './admin/admin-new-product/admin-new-product.component';
+import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -24,8 +26,10 @@ const routes: Routes = [
  
   { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuardService] },
 
-  { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuardService] },
-  { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuardService] },
+  { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuardService, AdminGuardService] },
+  { path: 'admin/products/new', component: AdminNewProductComponent, canActivate: [AuthGuardService, AdminGuardService] },
+  { path: 'admin/products/:id', component: AdminNewProductComponent, canActivate: [AuthGuardService, AdminGuardService] },
+  { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuardService, AdminGuardService] },
 
   { path: '**', component: NotFoundComponent },
 ]

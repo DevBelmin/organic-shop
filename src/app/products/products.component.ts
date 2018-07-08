@@ -13,3 +13,13 @@ export class ProductsComponent implements OnInit {
   }
 
 }
+
+
+//Title
+//Price
+//Category
+//Image URL
+
+//Show only Title Price and EDIT 
+// Implement Search
+// Implement adding new product

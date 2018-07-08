@@ -1,0 +1,52 @@
+[
+    {
+        "id": "1",
+        "title": "apple",
+        "price": "2.5"
+    },
+    {
+        "id": "2",
+        "title": "artichoke",
+        "price": "1.7"
+    },
+    {
+        "id": "3",
+        "title": "beans",
+        "price": "5.2"
+    },
+    {
+        "id": "4",
+        "title": "beetroot",
+        "price": "3.0"
+    },
+    {
+        "id": "5",
+        "title": "carrots",
+        "price": "1.15"
+    },
+    {
+        "id": "6",
+        "title": "celery",
+        "price": "7.65"
+    },
+    {
+        "id": "7",
+        "title": "garlic",
+        "price": "2.5"
+    },
+    {
+        "id": "8",
+        "title": "melons",
+        "price": "1.5"
+    },
+    {
+        "id": "9",
+        "title": "peas",
+        "price": "2.53"
+    },
+    {
+        "id": "10",
+        "title": "pumpkins",
+        "price": "0.50"
+    }
+]

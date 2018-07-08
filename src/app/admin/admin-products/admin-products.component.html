@@ -1,0 +1,36 @@
+
+<a routerLink="/admin/products/new"><button type="button" class="btn btn-primary">Add new product</button></a>
+
+
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search...">
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+    <!-- Progress Column -->
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
+      <td mat-cell *matCellDef="let row"> {{ row.title }} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+      <td mat-cell *matCellDef="let row"> {{ row.price | currency }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Edit </th>
+      <td mat-cell *matCellDef="let row"> <a [routerLink]="['/admin/products/', row.key]" type="button" class="btn btn-primary">Edit</a>  </td>
+    </ng-container>
+
+    
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

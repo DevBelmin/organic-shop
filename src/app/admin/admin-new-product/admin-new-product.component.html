@@ -1,0 +1,92 @@
+<div class="row">
+  <div class="col-md-6">
+    <form #f="ngForm" (ngSubmit)="save(f.value)">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input #title="ngModel" required ngModel name="title" id="title" type="text" class="form-control">
+        <div class="alert alert-danger" *ngIf="title?.touched && title?.invalid">
+          Title is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="price">Price</label>
+        <div class="input-group">
+          <span class="input-group-addon">$</span>
+          <input #price="ngModel" required [min]="0" ngModel name="price" id="price" type="number" class="form-control">
+        </div>
+        <div *ngIf="price?.touched && price?.invalid" class="alert alert-danger">
+          <div *ngIf="price.errors?.required">Price is required.</div>
+          <div *ngIf="price.errors?.min">Price should be 0 or higher.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="category">Category</label>
+        <select #category="ngModel" required ngModel name="category" id="category" class="form-control">
+          <option value=""></option>
+          <option *ngFor="let c of categories$ | async; let i=index" [value]="i">{{ c.name }}</option>
+        </select>
+        <div *ngIf="category?.touched && category?.invalid" class="alert alert-danger">
+          Category is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="imageUrl">ImageUrl</label>
+        <input url #imageUrl="ngModel" required ngModel name="imageUrl" id="imageUrl" type="text" class="form-control">
+        <div *ngIf="imageUrl?.touched && imageUrl?.invalid" class="alert alert-danger">
+          <div *ngIf="price.errors?.required"> Image URL is required.</div>
+          <div *ngIf="price.errors?.url">Please enter a valid URL.</div>
+        </div>
+      </div>
+
+      <button [disabled]="f.invalid" class="btn btn-primary">Save</button>
+
+    </form>
+
+  </div>
+  <div class="col-md-6">
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" [src]="imageUrl.value">
+      <div class="card-body">
+        <h5 class="card-title">{{ title.value }}</h5>
+        <p class="card-text"> {{ price.value | currency:'USD':true }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<!--
+<mat-card>
+  <mat-card-content>
+    <div class="example-container">
+      <mat-form-field>
+        <input matInput placeholder="Title">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Amount" type="number" class="example-right-align">
+        <span matPrefix>$&nbsp;</span>
+        <span matSuffix>.00</span>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="Category">
+          <mat-option value="option">Option</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button type="button" class="btn btn-primary">Save</button>
+  </mat-card-actions>
+</mat-card>
+-->
